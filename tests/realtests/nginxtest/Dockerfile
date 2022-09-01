@@ -1,16 +1,43 @@
+###############################################
+## La version de laquelle on part pour build ##
+###############################################
 FROM debian:buster
 
+#########################################################
+## Installer Nginx et opensslm et clean l'installation ##
+#########################################################
 RUN apt-get update \ 
 	&& apt-get install -y --force-yes nginx \
 	&& apt-get install -y openssl \
 	&& apt-get clean \
-	&& rm -rf /var/lib/apt/list/* /tmp/* /var/tmp*
+	&& rm -rf /var/lib/apt/list/* 
+	#&& /tmp/* /var/tmp*
 
+##################################
+## Generer les certificates ssl ##
+##################################
+#RUN sudo openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout /etc/ssl/private/nginx-selfsigned.key -out /etc/ssl/certs/nginx-selfsigned.crt 
+RUN sudo openssl req -x509 \
+	-nodes \
+	-days 365 \
+	-newkey rsa:2048 \
+	-keyout /etc/ssl/private/nginx-selfsigned.key \
+	-out /etc/ssl/certs/nginx-selfsigned.crt \
+	-subj "/C=FR/ST=paris/L=paris/O=42/OU=ndormoy/CN=ndormoy.42.fr"
+
+#########################################
+## Copier le ficher de conf dans nginx ##
+#########################################
 #COPY conf/nginx.conf /etc/nginx
-COPY conf/nginx.conf /etc/nginx/conf.d/
+COPY conf/nginx.conf /etc/nginx/conf.d
 
-EXPOSE 443 80
+##################
+## Le/Les ports ##
+##################
+#EXPOSE 80
+EXPOSE 443
 
-RUN sudo openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout /etc/ssl/private/nginx-selfsigned.key -out /etc/ssl/certs/nginx-selfsigned.crt
-
+#####################################################
+## Commande a executer quand le container se lance ##
+#####################################################
 CMD ["nginx", "-g", "daemon off;"]
