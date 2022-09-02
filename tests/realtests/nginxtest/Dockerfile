@@ -25,11 +25,18 @@ RUN openssl req -x509 \
 	-out /etc/ssl/certs/nginx-selfsigned.crt \
 	-subj "/C=FR/ST=paris/L=paris/O=42/OU=ndormoy/CN=ndormoy.42.fr"
 
+##########
+## TEST ##
+##########
+# RUN mkdir /var/www/html/test
+
+# COPY conf/index.html /var/www/html/test
+
 #########################################
 ## Copier le ficher de conf dans nginx ##
 #########################################
-COPY conf/nginx.conf /etc/nginx
-# COPY conf/nginx.conf /etc/nginx/conf.d
+# COPY conf/nginx.conf /etc/nginx
+COPY conf/nginx.conf /etc/nginx/conf.d
 
 ##################
 ## Le/Les ports ##
