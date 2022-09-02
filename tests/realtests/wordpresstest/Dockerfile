@@ -8,6 +8,9 @@ FROM debian:buster
 ################################
 RUN apt-get update \
 	&& apt-get install -y \
+	php7.3 \
+	php-mysql \
+	php-cli \
 	php-cgi \
 	php-common \
 	php-fpm \
@@ -21,6 +24,11 @@ RUN apt-get update \
 	php-bcmath \
 	unzip \
 	wget
+
+#######################
+## Working directory ##
+#######################
+WORKDIR /var/www/html
 
 ##################################################
 ## On utilise le port 9000 qui va faire le lien ##
