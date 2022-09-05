@@ -9,7 +9,7 @@ FROM debian:buster
 RUN apt-get update \
 	&& apt-get install -y \
 	php7.3 \
-	php-mysql \
+	php7.3-mysql \
 	php-cli \
 	php-cgi \
 	php-common \
@@ -23,7 +23,17 @@ RUN apt-get update \
 	php-mysql \
 	php-bcmath \
 	unzip \
-	wget
+	wget \
+	curl
+
+###############################################################################
+## Installer wp-cli qui permet de faciliter l'installation de wordpress      ##
+## (et le configurer, ce qui permet de lancer wp dans le script .sh sans pb) ##
+###############################################################################
+RUN curl -O https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar
+RUN chmod +x wp-cli.phar
+RUN mv wp-cli.phar /usr/local/bin/wp
+
 
 #######################
 ## Working directory ##
