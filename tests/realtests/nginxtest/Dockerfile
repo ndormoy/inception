@@ -21,7 +21,8 @@ RUN openssl req -x509 \
 	-days 365 \
 	-newkey rsa:2048 \
 	-keyout /etc/ssl/private/nginx-selfsigned.key \
-	-out /etc/ssl/certs/nginx-selfsigned.crt \
+	#-out /etc/ssl/certs/nginx-selfsigned.crt \
+	-out /etc/ssl/certs/nginx-selfsigned.pem \
 	-subj "/C=FR/ST=paris/L=paris/O=42/OU=ndormoy/CN=ndormoy.42.fr"
 
 ##########
