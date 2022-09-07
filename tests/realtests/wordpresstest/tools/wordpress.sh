@@ -1,18 +1,5 @@
 #!/bin/sh
 
-#########################################
-# Premiere maniere d'installer wordpress#
-#########################################
-# wget https://fr.wordpress.org/wordpress-6.0.2-fr_FR.zip
-# unzip wordpress-6.0.2-fr_FR.zip
-# rm -rf wordpress-6.0.2-fr_FR.zip
-# Puis remplacer les variables dans le fichier wp-config-sample.php
-
-#######################################################################
-# Deuxieme maniere plus pratique avec wp-cli, il faut d'abord l'avoir##
-# installe avant sinon la commande wp n'existe pas.####################
-#######################################################################
-
 #############################
 ## On telecharge wordpress ##
 #############################
@@ -31,6 +18,7 @@ wp core install \
 	--url="${DOMAIN_NAME}" \
 	--title="nono" \
 	--admin_user="${MYWP_ADMIN_USER}" \
+	--admin_password="${MYWP_ADMIN_PASSWORD}" \
 	--admin_email="${MYWP_ADMIN_EMAIL}" \
 	--path="${MYWP_PATH}" \
 	--allow-root
@@ -38,8 +26,9 @@ wp core install \
 ################################
 ## On creer un User wordpress ##
 ################################
-wp user create noe ndormoy@student.42.fr \
+wp user create "${MYWP_USER}" "${MYWP_USER_EMAIL}" \
 	--role=author \
+	--user_pass="${MYWP_USER_PASSWORD}" \
 	--allow-root
 
 ########################################################
