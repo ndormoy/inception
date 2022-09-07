@@ -18,15 +18,21 @@
 #############################
 wp core download --allow-root
 
+#######################################
+## On creer un nouveau wp-config.php ##
+#######################################
+wp config create --dbname="${MY_SQL_DATA_BASE}" --dbuser="${MYSQL_USER}" --dbpass="${MYSQL_PASSWORD}" --skip-check
+
 ###########################
 ## On installe wordpress ##
 ###########################
+#wp db create
 wp core install \
-	--url="ndormoy.42.fr" \
-	--title="noe" \
-	--admin_user="" \
-	--admin_email="" \
-	--path="/var/www/html/" \
+	--url="${DOMAIN_NAME}" \
+	--title="nono" \
+	--admin_user="${MYWP_ADMIN_USER}" \
+	--admin_email="${MYWP_ADMIN_EMAIL}" \
+	--path="${MYWP_PATH}" \
 	--allow-root
 
 ################################
