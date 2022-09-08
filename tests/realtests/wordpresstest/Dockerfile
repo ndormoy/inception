@@ -14,7 +14,8 @@ RUN apt-get update \
 	php-cgi \
 	php-common \
 	#php-fpm \
-	php-fpm7.3 \
+	#php-fpm7.3 \
+	php7.3-fpm \
 	php-pear \
 	php-mbstring \
 	php-zip \
