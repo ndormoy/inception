@@ -6,11 +6,11 @@ FROM debian:buster
 #########################################################
 ## Installer Nginx et opensslm et clean l'installation ##
 #########################################################
-RUN apt-get update \ 
+RUN apt-get update \
 	&& apt-get install -y --force-yes nginx \
 	&& apt-get install -y openssl \
 	&& apt-get clean \
-	&& rm -rf /var/lib/apt/list/* 
+	&& rm -rf /var/lib/apt/list/*
 	#&& /tmp/* /var/tmp*
 
 ##################################

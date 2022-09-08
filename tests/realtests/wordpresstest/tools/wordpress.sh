@@ -8,7 +8,7 @@ wp core download --allow-root
 #######################################
 ## On creer un nouveau wp-config.php ##
 #######################################
-wp config create --dbname="${MY_SQL_DATA_BASE}" --dbuser="${MYSQL_USER}" --dbpass="${MYSQL_PASSWORD}" --skip-check
+wp config create --dbname="${MY_SQL_DATABASE}" --dbuser="${MYSQL_USER}" --dbpass="${MYSQL_PASSWORD}" --skip-check
 
 ###########################
 ## On installe wordpress ##

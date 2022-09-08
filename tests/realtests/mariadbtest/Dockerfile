@@ -21,3 +21,8 @@ COPY conf/50-server.cnf /etc/mysql/mariadb.conf.d/50-server.cnf
 ## entre Wordpress et mariadb                   ##
 ##################################################
 EXPOSE 3306
+
+#####################################################
+## Commande a executer quand le container se lance ##
+#####################################################
+CMD ["setup_mariadb.sh"]
