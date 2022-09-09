@@ -21,9 +21,8 @@ RUN openssl req -x509 \
 	-days 365 \
 	-newkey rsa:2048 \
 	-keyout /etc/ssl/private/nginx-selfsigned.key \
-	#-out /etc/ssl/certs/nginx-selfsigned.crt \
 	-out /etc/ssl/certs/nginx-selfsigned.pem \
-	-subj "/C=FR/ST=paris/L=paris/O=42/OU=ndormoy/CN=ndormoy.42.fr"
+	-subj "/C=FR/ST=paris/L=paris/O=42, /OU=ndormoy/CN=ndormoy.42.fr"
 
 ##########
 ## TEST ##
@@ -36,7 +35,7 @@ RUN openssl req -x509 \
 ## Copier le ficher de conf dans nginx ##
 #########################################
 # COPY conf/nginx.conf /etc/nginx
-COPY conf/nginx.conf /etc/nginx/conf.d
+COPY conf/nginx.conf /etc/nginx/conf.d/
 
 ##################
 ## Le/Les ports ##

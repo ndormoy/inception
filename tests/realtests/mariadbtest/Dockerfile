@@ -6,10 +6,24 @@ FROM debian:buster
 #######################
 ## Installer mariadb ##
 #######################
-RUN apt-get update \
+RUN apt-get update -y \
 	&& apt-get install -y \
 	mariadb-client \
 	mariadb-server
+
+###########################################################
+## Creer le dossier mysqld et lui donner les droits pour ##
+## pouvoir lancer sqld correctement sinon erreur 2002    ##
+###########################################################
+RUN mkdir -p /var/run/mysqld
+RUN chown -R mysql:root /run/mysqld
+RUN chown -R mysql:mysql /var/lib/mysql
+
+##########################################################
+## Lancer en arriere plan mysqld (server) pour pouvoir  ##
+## executer des commandes mysql (client)                ##
+##########################################################
+RUN mysqld &
 
 ###################################################
 ## Copier le fichier de configuration de mariadb ##
