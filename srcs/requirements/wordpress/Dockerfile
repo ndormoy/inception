@@ -25,7 +25,8 @@ RUN apt-get update \
 	php-bcmath \
 	unzip \
 	wget \
-	curl
+	curl \
+	mariadb-client
 
 ###############################################################################
 ## Installer wp-cli qui permet de faciliter l'installation de wordpress      ##
