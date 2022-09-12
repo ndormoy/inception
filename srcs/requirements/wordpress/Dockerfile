@@ -61,5 +61,4 @@ EXPOSE 9000
 #####################################################
 ## Commande a executer quand le container se lance ##
 #####################################################
-#CMD ["sh", "tools/wordpress.sh"]
 CMD ["sh", "/var/www/html/wordpress.sh"]
