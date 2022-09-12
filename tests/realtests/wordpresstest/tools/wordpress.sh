@@ -8,7 +8,7 @@ wp core download --allow-root
 #######################################
 ## On creer un nouveau wp-config.php ##
 #######################################
-wp config create --dbname="${MY_SQL_DATABASE}" --dbuser="${MYSQL_USER}" --dbpass="${MYSQL_PASSWORD}" --skip-check
+wp config create --dbname="${MY_SQL_DATABASE}" --dbuser="${MYSQL_USER}" --dbpass="${MYSQL_PASSWORD}" --skip-check --allow-root
 
 ###########################
 ## On installe wordpress ##
@@ -31,7 +31,13 @@ wp user create "${MYWP_USER}" "${MYWP_USER_EMAIL}" \
 	--user_pass="${MYWP_USER_PASSWORD}" \
 	--allow-root
 
+######################################################
+## On creer le dossier qui doit exister pour lancer ##
+## la commande d'en dessous                         ##
+######################################################
+mkdir -p /run/php/php7.3
+
 ########################################################
 # On lance php-fpm qui est le FastCGI Process Manager ##
 ########################################################
-php-fmp -F
+php-fmp7.3 -F

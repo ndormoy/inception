@@ -14,7 +14,6 @@ RUN apt-get update \
 	php-cgi \
 	php-common \
 	#php-fpm \
-	#php-fpm7.3 \
 	php7.3-fpm \
 	php-pear \
 	php-mbstring \
@@ -41,6 +40,13 @@ RUN mv wp-cli.phar /usr/local/bin/wp
 ################################################################
 COPY conf/www.conf /etc/php/7.3/fpm/pool.d/
 
+###############################################
+## Copier notre wordpress.sh dans le workdir ##
+###############################################
+RUN mkdir -p /var/www/html
+COPY tools/wordpress.sh /var/www/html/
+RUN chmod 777 /var/www/html/wordpress.sh
+
 #######################
 ## Working directory ##
 #######################
@@ -55,4 +61,5 @@ EXPOSE 9000
 #####################################################
 ## Commande a executer quand le container se lance ##
 #####################################################
-CMD ["sh", "tools/wordpress.sh"]
+#CMD ["sh", "tools/wordpress.sh"]
+CMD ["sh", "/var/www/html/wordpress.sh"]

@@ -9,4 +9,4 @@ mysql --execute "CREATE USER '${MYSQL_USER}'@'%' IDENTIFIED BY '${MYSQL_PASSWORD
 mysql --execute "GRANT ALL PRIVILEGES ON '${MYSQL_DATABASE}'. * TO '${MYSQL_USER}';"
 mysql --execute "FLUSH PRIVILEGES;"
 
-exec mysqld --user=mysql
+#exec mysqld --user=mysql
