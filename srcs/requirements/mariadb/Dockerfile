@@ -15,20 +15,20 @@ RUN apt-get update -y \
 ## Creer le dossier mysqld et lui donner les droits pour ##
 ## pouvoir lancer sqld correctement sinon erreur 2002    ##
 ###########################################################
-RUN mkdir -p /var/run/mysqld
-RUN chown -R mysql:root /run/mysqld
-RUN chown -R mysql:mysql /var/lib/mysql
-
-##########################################################
-## Lancer en arriere plan mysqld (server) pour pouvoir  ##
-## executer des commandes mysql (client)                ##
-##########################################################
-RUN mysqld &
+RUN mkdir -p /var/run/mysqld/
+RUN chown -R mysql:root /run/mysqld/
+RUN chown -R mysql:mysql /var/lib/mysql/
 
 ###################################################
 ## Copier le fichier de configuration de mariadb ##
 ###################################################
 COPY conf/50-server.cnf /etc/mysql/mariadb.conf.d/50-server.cnf
+
+#######################################
+## Copier le script setup_mariadb.sh ##
+#######################################
+COPY tools/setup_mariadb.sh /usr/
+RUN chmod 777 /usr/setup_mariadb.sh
 
 ##################################################
 ## On utilise le port 3306 qui va faire le lien ##
@@ -39,4 +39,4 @@ EXPOSE 3306
 #####################################################
 ## Commande a executer quand le container se lance ##
 #####################################################
-CMD ["setup_mariadb.sh"]
+CMD ["/usr/setup_mariadb.sh"]
