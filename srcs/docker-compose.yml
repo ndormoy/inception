@@ -1,25 +1,50 @@
 version: "3.8"
+
 services:
-  web:
-    container_name: nginx_container
-    image: nginx_image
-    build: requirements/nginx/
-    ports:
-    - "443:443"
+
+  #############
+  ## MariaDB ##
+  #############
 
   mariadb:
     container_name: mariadb_container
     image: mariadb_image
+    restart: always
     build: requirements/mariadb/
     ports:
     - "3306:3306"
 
+  ###############
+  ## WordPress ##
+  ###############
+
   wordpress:
     container_name: wordpress_container
     image: wordpress_image
+    restart: always
     build: requirements/wordpress
     depends_on:
-      - web
       - mariadb
     ports:
-    - "9000:9000"
+      - "9000:9000"
+
+  ###########
+  ## Nginx ##
+  ###########
+
+  nginx:
+    container_name: nginx_container
+    image: nginx_image
+    restart: always
+    build: requirements/nginx/
+    depends_on:
+      - wordpress
+    ports:
+      - "443:443"
+
+  #############
+  ## Network ##
+  #############
+
+  networks:
+    my-network:

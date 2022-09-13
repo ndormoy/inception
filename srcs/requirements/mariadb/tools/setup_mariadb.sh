@@ -10,8 +10,9 @@ export MYSQL_USER=ndormoy
 export MYSQL_PASSWORD=poulet
 
 ###############################################################
-## A FAIRE : Il faut verifier si on a deja une base de donne ##
+##Permet de verifier si on a deja une base de donnee         ##
 ## si oui, on peut passer directement a la derniere commande ##
+## Si non on creer la base de donnee et les user qu'on veut  ##
 ###############################################################
 if mysql "${MYSQL_DATABASE}" >/dev/null 2>&1 </dev/null
 then

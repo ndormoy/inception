@@ -13,7 +13,6 @@ RUN apt-get update \
 	php7.3-cli \
 	php-cgi \
 	php-common \
-	#php-fpm \
 	php7.3-fpm \
 	php-pear \
 	php-mbstring \
