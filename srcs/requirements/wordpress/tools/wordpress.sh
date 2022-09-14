@@ -3,24 +3,24 @@
 #############################################
 ## A enlever une fois qu'on ajoute le .env ##
 #############################################
-export MYSQL_DATABASE=wordpress
-export MYSQL_ROOT_USER=root
-export MYSQL_ROOT_PASSWORD=rootpouet
-export MYSQL_USER=ndormoy
-export MYSQL_PASSWORD=poulet
+# export MYSQL_DATABASE=wordpress
+# export MYSQL_ROOT_USER=root
+# export MYSQL_ROOT_PASSWORD=rootpouet
+# export MYSQL_USER=ndormoy
+# export MYSQL_PASSWORD=poulet
 
-export MYWP_ADMIN_USER=adminndormoy
-export MYWP_ADMIN_PASSWORD=adminpouleto
-export MYWP_ADMIN_EMAIL=ndormoy@student.42.fr
-export MYWP_USER=ndormoy
-export MYWP_USER_PASSWORD=pouleto
-export MYWP_USER_EMAIL=testo@student.42.fr
-export MYWP_HOST=mariadb
-export MYWP_PATH=/var/www/html/
+# export MYWP_ADMIN_USER=adminndormoy
+# export MYWP_ADMIN_PASSWORD=adminpouleto
+# export MYWP_ADMIN_EMAIL=ndormoy@student.42.fr
+# export MYWP_USER=ndormoy
+# export MYWP_USER_PASSWORD=pouleto
+# export MYWP_USER_EMAIL=testo@student.42.fr
+# export MYWP_HOST=mariadb
+# export MYWP_PATH=/var/www/html/
 
-export DOMAIN_NAME=noe.42.fr
+# export DOMAIN_NAME=noe.42.fr
 
-sleep 10
+#sleep 10
 
 # while ! (mysqladmin ping)
 #   do
@@ -33,6 +33,7 @@ sleep 10
 ## On telecharge wordpress ##
 #############################
 wp core download --path="/var/www/html" --allow-root
+#wp core download --path="${MYWP_PATH}" --allow-root
 
 #######################################
 ## On creer un nouveau wp-config.php ##
