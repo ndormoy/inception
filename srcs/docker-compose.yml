@@ -9,10 +9,15 @@ services:
   mariadb:
     container_name: mariadb_container
     image: mariadb_image
-    restart: always
+    #restart: unless-stopped
     build: requirements/mariadb/
     ports:
-    - "3306:3306"
+      - "3306:3306"
+    volumes:
+      - maria-volume:/var/lib/mysql/
+    #env_file: .env
+    networks:
+      - my-network
 
   ###############
   ## WordPress ##
@@ -21,12 +26,17 @@ services:
   wordpress:
     container_name: wordpress_container
     image: wordpress_image
-    restart: always
+    #restart: unless-stopped
     build: requirements/wordpress
     depends_on:
       - mariadb
     ports:
       - "9000:9000"
+    volumes:
+      - wordpress-volume:/var/www/html
+    #env_file: .env
+    networks:
+      - my-network
 
   ###########
   ## Nginx ##
@@ -35,16 +45,29 @@ services:
   nginx:
     container_name: nginx_container
     image: nginx_image
-    restart: always
+    #restart: unless-stopped
     build: requirements/nginx/
     depends_on:
       - wordpress
     ports:
       - "443:443"
+    volumes:
+      - wordpress-volume:/var/www/html
+    #env_file: .env
+    networks:
+      - my-network
 
-  #############
-  ## Network ##
-  #############
+#############
+## Network ##
+#############
+networks:
+  my-network:
 
-  networks:
-    my-network:
+#############
+## Volumes ##
+#############
+volumes:
+  wordpress-volume:
+    name: wordpress-volume
+  maria-volume:
+    name: maria-volume

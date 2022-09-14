@@ -52,4 +52,6 @@ else
 
 fi
 
+echo "starting mysqld as PID 1"
+
 exec mysqld
