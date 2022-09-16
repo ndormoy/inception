@@ -18,7 +18,7 @@
 # export MYWP_HOST=mariadb
 # export MYWP_PATH=/var/www/html/
 
-# export DOMAIN_NAME=noe.42.fr
+# export DOMAIN_NAME=ndormoy.42.fr
 
 #sleep 10
 
