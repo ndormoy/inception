@@ -56,7 +56,7 @@ WORKDIR /var/www/html
 ## On utilise le port 9000 qui va faire le lien ##
 ## entre NGINX et Wordpress                     ##
 ##################################################
-EXPOSE 9000
+#EXPOSE 9000
 
 #####################################################
 ## Commande a executer quand le container se lance ##

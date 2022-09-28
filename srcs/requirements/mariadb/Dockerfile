@@ -34,7 +34,7 @@ RUN chmod 777 /usr/setup_mariadb.sh
 ## On utilise le port 3306 qui va faire le lien ##
 ## entre Wordpress et mariadb                   ##
 ##################################################
-EXPOSE 3306
+#EXPOSE 3306
 
 #####################################################
 ## Commande a executer quand le container se lance ##
