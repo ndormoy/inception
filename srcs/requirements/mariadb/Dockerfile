@@ -16,8 +16,10 @@ RUN apt-get update -y \
 ## pouvoir lancer sqld correctement sinon erreur 2002    ##
 ###########################################################
 RUN mkdir -p /var/run/mysqld/
-RUN chown -R mysql:root /run/mysqld/
-RUN chown -R mysql:mysql /var/lib/mysql/
+RUN chmod -R 777 /run/mysqld/
+RUN chmod -R 777 /var/lib/mysql/
+# RUN chown -R mysql:root /run/mysqld/
+# RUN chown -R mysql:mysql /var/lib/mysql/
 
 ###################################################
 ## Copier le fichier de configuration de mariadb ##
@@ -34,7 +36,7 @@ RUN chmod 777 /usr/setup_mariadb.sh
 ## On utilise le port 3306 qui va faire le lien ##
 ## entre Wordpress et mariadb                   ##
 ##################################################
-#EXPOSE 3306
+EXPOSE 3306
 
 #####################################################
 ## Commande a executer quand le container se lance ##
