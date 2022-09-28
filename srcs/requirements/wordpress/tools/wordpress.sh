@@ -32,8 +32,8 @@
 #############################
 ## On telecharge wordpress ##
 #############################
-wp core download --path="/var/www/html" --allow-root
-#wp core download --path="${MYWP_PATH}" --allow-root
+# wp core download --path="/var/www/html" --allow-root
+wp core download --path="${MYWP_PATH}" --allow-root
 
 #######################################
 ## On creer un nouveau wp-config.php ##
