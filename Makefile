@@ -6,5 +6,5 @@ up:
 clean:
 	docker stop nginx_container mariadb_container wordpress_container
 	docker rm nginx_container mariadb_container wordpress_container
-	docker image rm nginx_image mariadb_image wordpress_image
+	docker image rm nginx mariadb wordpress
 	docker volume rm maria-volume wordpress-volume
