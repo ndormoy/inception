@@ -18,8 +18,6 @@ RUN apt-get update -y \
 RUN mkdir -p /var/run/mysqld/
 RUN chmod -R 777 /run/mysqld/
 RUN chmod -R 777 /var/lib/mysql/
-# RUN chown -R mysql:root /run/mysqld/
-# RUN chown -R mysql:mysql /var/lib/mysql/
 
 ###################################################
 ## Copier le fichier de configuration de mariadb ##

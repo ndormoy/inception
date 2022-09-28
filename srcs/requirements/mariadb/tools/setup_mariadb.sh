@@ -1,14 +1,5 @@
 #!/bin/sh
 
-#############################################
-## A enlever une fois qu'on ajoute le .env ##
-#############################################
-# export MYSQL_DATABASE=wordpress
-# export MYSQL_ROOT_USER=root
-# export MYSQL_ROOT_PASSWORD=rootpouet
-# export MYSQL_USER=ndormoy
-# export MYSQL_PASSWORD=poulet
-
 ###############################################################
 ##Permet de verifier si on a deja une base de donnee         ##
 ## si oui, on peut passer directement a la derniere commande ##
