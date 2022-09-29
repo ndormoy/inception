@@ -66,6 +66,7 @@ services:
 #############
 networks:
   my-network:
+    driver: bridge
 
 #############
 ## Volumes ##
@@ -73,5 +74,16 @@ networks:
 volumes:
   wordpress-volume:
     name: wordpress-volume
+    driver: local
+    driver_opts:
+      type: none
+      device: /home/ndormoy/data/wordpress
+      o: bind
+
   maria-volume:
     name: maria-volume
+    driver: local
+    driver_opts:
+      type: none
+      device: /home/ndormoy/data/mariadb
+      o: bind
