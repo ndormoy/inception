@@ -5,10 +5,7 @@ all:
 	sudo chown 777 /home/ndormoy/data/mariadb
 	sudo docker compose -f srcs/docker-compose.yml up -d
 clean:
-	sudo docker stop nginx_container mariadb_container wordpress_container
-	sudo docker rm nginx_container mariadb_container wordpress_container
-	sudo docker image rm nginx mariadb wordpress
-	sudo docker volume rm maria-volume wordpress-volume
+	cd srcs ; sudo docker compose down -v --rmi all
 	sudo rm -rf /home/ndormoy/data
 
 fclean: 
@@ -19,4 +16,3 @@ re:
 mini:
 	sudo docker volume rm maria-volume wordpress-volume	
 	sudo docker image rm nginx mariadb wordpress
-	
